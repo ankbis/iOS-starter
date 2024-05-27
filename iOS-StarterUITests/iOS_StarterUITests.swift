@@ -30,5 +30,44 @@ class iOS_StarterUITests: XCTestCase {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testAdditionOperation() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let maskButton = app.buttons["😷"]
+        maskButton.tap()
+        
+        let alert = app.alerts.element
+        XCTAssertEqual(alert.label, "Meaning")
+        XCTAssertEqual(alert.message, "5")
+    }
+    
+    func testMultiplicationOperation() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let pigButton = app.buttons["🐖"]
+        pigButton.tap()
+        
+        let alert = app.alerts.element
+        XCTAssertEqual(alert.label, "Meaning")
+        XCTAssertEqual(alert.message, "6")
+    }
+    
+    func testOtherOperations() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let cakeButton = app.buttons["🎂"]
+        cakeButton.tap()
+        let alert1 = app.alerts.element
+        XCTAssertEqual(alert1.message, "12")
+        
+        let beerButton = app.buttons["🍻"]
+        beerButton.tap()
+        let alert2 = app.alerts.element
+        XCTAssertEqual(alert2.message, "20")
+    }
 
 }
