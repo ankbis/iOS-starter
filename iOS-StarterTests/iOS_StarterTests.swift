@@ -24,6 +24,26 @@ class iOS_StarterTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testShowMessageWithValidEmoji() {
+        let viewController = ViewController()
+        let button = UIButton(type: .custom)
+        button.setTitle("😀", for: .normal)
+        viewController.showMessage(sender: button)
+        // Assert that the alert is displayed with the correct message
+        XCTAssertNotNil(viewController.presentedViewController as? UIAlertController)
+        XCTAssertEqual((viewController.presentedViewController as? UIAlertController)?.message, "laugh")
+    }
+
+    func testShowMessageWithUnknownEmoji() {
+        let viewController = ViewController()
+        let button = UIButton(type: .custom)
+        button.setTitle("🤖", for: .normal)
+        viewController.showMessage(sender: button)
+        // Assert that the alert is displayed with a default message
+        XCTAssertNotNil(viewController.presentedViewController as? UIAlertController)
+        XCTAssertEqual((viewController.presentedViewController as? UIAlertController)?.message, "Unknown emoji")
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
