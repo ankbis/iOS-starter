@@ -9,6 +9,7 @@
 import XCTest
 @testable import iOS_Starter
 
+
 class iOS_StarterTests: XCTestCase {
 
     override func setUp() {
@@ -24,6 +25,30 @@ class iOS_StarterTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+    func testAddition() {
+        let calculator = Calculator()
+        let result = calculator.add(a: 5.0, b: 3.0)
+        XCTAssertEqual(result, 8.0)
+    }
+
+    func testSubtraction() {
+        let calculator = Calculator()
+        let result = calculator.subtract(a: 10.0, b: 4.0)
+        XCTAssertEqual(result, 6.0)
+    }
+
+    func testMultiplication() {
+        let calculator = Calculator()
+        let result = calculator.multiply(a: 2.0, b: 7.0)
+        XCTAssertEqual(result, 14.0)
+    }
+
+    func testDivision() {
+        let calculator = Calculator()
+        let result = try? calculator.divide(a: 15.0, b: 3.0)
+        XCTAssertEqual(result, 5.0)
+    }
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
@@ -31,4 +56,14 @@ class iOS_StarterTests: XCTestCase {
         }
     }
 
+    func testDivisionByZero() {
+        let calculator = Calculator()
+        XCTAssertThrowsError(try calculator.divide(a: 10.0, b: 0.0)) { error in
+            guard let calculatorError = error as? CalculatorError else {
+                XCTFail("Unexpected error type")
+                return
+            }
+            XCTAssertEqual(calculatorError, CalculatorError.divisionByZero)
+        }
+    }
 }
