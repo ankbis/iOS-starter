@@ -1,0 +1,37 @@
+Name: code-coverage-workflow
+SchemaVersion: 1.0
+
+Triggers:
+- Type: PUSH
+
+Actions:
+  CodeCoverageTest-gamma:
+    Identifier: aws/managed-test-gamma@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Reports:
+        CoverageReport:
+          Format: CLOVERXML
+          IncludePaths:
+            - "coverage/*"
+    Configuration:
+      Steps:
+        - Run: npm install
+        - Run: npm run test:coverage
+
+  PublishCoverageReport-gamma:
+    Identifier: aws/publish-report-gamma@v1
+    DependsOn:
+      - CodeCoverageTest-gamma
+    Inputs:
+      Reports:
+        - CoverageReport
+    Environment:
+      Name: codecatalyst-cfn-environment
+      Connections:
+        - Name: codecatalyst-account-connection
+          Role: codecatalyst-build-role
+    Configuration:
+      ReportNamePrefix: code-coverage
