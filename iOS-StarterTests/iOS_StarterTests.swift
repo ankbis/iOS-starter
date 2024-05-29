@@ -9,6 +9,7 @@
 import XCTest
 @testable import iOS_Starter
 
+ let testSuite = TestSuite()
 class iOS_StarterTests: XCTestCase {
 
     override func setUp() {
