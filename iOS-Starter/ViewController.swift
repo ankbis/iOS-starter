@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iOS_Starter
 
 class ViewController: UIViewController {
 
@@ -26,10 +27,10 @@ class ViewController: UIViewController {
             
             // Get the meaning of the emoji from the dictionary
             var emojis = ["😀": "laugh",
-                          "😷": "corona",
-                          "🐖":"rahul",
-                          "🎂":"cake",
-                          "🍻":"beer"
+                          "😷": "corona", 
+                          "🐖": "multiply \(Calculator().multiply(a: 2, b: 3))",
+                          "🎂": "cake",
+                          "🍻": "add \(Calculator().add(a: 4, b: 5))"
             ]
             
             // Change the line below to display the meaning of the emoji instead of Hello World
