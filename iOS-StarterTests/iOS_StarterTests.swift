@@ -20,7 +20,9 @@ class iOS_StarterTests: XCTestCase {
     }
 
     func testExample() {
-        // This is an example of a functional test case.
+        let calculator = Calculator()
+        XCTAssertEqual(calculator.squareRoot(number: 16.0), 4.0)
+        XCTAssertEqual(calculator.squareRoot(number: -4.0), 2.0)
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
@@ -29,6 +31,7 @@ class iOS_StarterTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+        testSquareRoot()
     }
 
 }
