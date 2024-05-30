@@ -29,6 +29,17 @@ class iOS_StarterUITests: XCTestCase {
     func testExample() {
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let app = XCUIApplication()
+        app.launch()
+        
+        let laughButton = app.buttons["😀"]
+        laughButton.tap()
+        
+        let alert = app.alerts.element
+        XCTAssertEqual(alert.label, "Square Root")
+        XCTAssertEqual(alert.value, "4.0")
+        alert.buttons["OK"].tap()
+        XCTAssertFalse(alert.exists)
     }
 
 }
