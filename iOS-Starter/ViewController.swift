@@ -5,6 +5,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
 
@@ -24,13 +25,12 @@ class ViewController: UIViewController {
             
             // Get the meaning of the emoji from the dictionary
             var emojis = ["😀": "laugh",
-                          "😷": "cough",
-                          "🎂":"cake",
-                          "🍻":"beer"
+                          "😷": "cough"
             ]
             
+            let calculator = Calculator()
             // Change the line below to display the meaning of the emoji instead of Hello World
-            let alertController = UIAlertController(title: "Meaning", message:  emojis[wordToLookup], preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Meaning", message:  "The sum is \(calculator.add(a: 5, b: 10)) and the product is \(calculator.multiply(a: 3, b: 4))", preferredStyle: UIAlertController.Style.alert)
             
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
@@ -38,4 +38,5 @@ class ViewController: UIViewController {
     }
 
 }
+
 
