@@ -2,8 +2,6 @@
 //  ViewController.swift
 //  iOS-Starter
 //
-//  Created by Ranjodh Singh on 5/23/20.
-//  Copyright © 2020 Ranjodh Singh. All rights reserved.
 //
 
 import UIKit
@@ -26,8 +24,7 @@ class ViewController: UIViewController {
             
             // Get the meaning of the emoji from the dictionary
             var emojis = ["😀": "laugh",
-                          "😷": "corona",
-                          "🐖":"rahul",
+                          "😷": "cough",
                           "🎂":"cake",
                           "🍻":"beer"
             ]
