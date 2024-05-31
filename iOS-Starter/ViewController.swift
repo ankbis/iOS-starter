@@ -7,6 +7,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    let calculator = Calculator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,19 +25,28 @@ class ViewController: UIViewController {
         if let wordToLookup = selectedButton.titleLabel?.text {
             
             // Get the meaning of the emoji from the dictionary
-            var emojis = ["😀": "laugh",
-                          "😷": "cough",
-                          "🎂":"cake",
-                          "🍻":"beer"
-            ]
+            let meaning = getMeaning(for: wordToLookup)
             
             // Change the line below to display the meaning of the emoji instead of Hello World
-            let alertController = UIAlertController(title: "Meaning", message:  emojis[wordToLookup], preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Meaning", message: meaning, preferredStyle: .alert)
             
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
     }
 
+    private func getMeaning(for emoji: String) -> String {
+        switch emoji {
+        case "😀": return String(calculator.add(1, 2))
+        case "😷": return String(calculator.multiply(3, 4))
+        case "🎂": return "cake"
+        case "🍻": return "beer"
+        case "➕": return String(calculator.add(2, 3))
+        case "✖️": return String(calculator.multiply(4, 5))
+        default: return "Unknown emoji"
+        }
+    }
+    
 }
+
 

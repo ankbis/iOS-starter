@@ -31,4 +31,28 @@ class iOS_StarterUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+     func testAdditionButton() {
+         let app = XCUIApplication()
+         app.launch()
+         
+         let addButton = app.buttons.matching(identifier: "➕").element
+         addButton.tap()
+         
+         let alert = app.alerts.element
+         XCTAssertEqual(alert.label, "Meaning")
+         XCTAssertEqual(alert.value?.value as? String, "5")
+     }
+     
+     func testMultiplicationButton() {
+         let app = XCUIApplication()
+         app.launch()
+         
+         let multiplyButton = app.buttons.matching(identifier: "✖️").element
+         multiplyButton.tap()
+         
+         let alert = app.alerts.element
+         XCTAssertEqual(alert.label, "Meaning") 
+         XCTAssertEqual(alert.value?.value as? String, "20")
+     }
+
 }

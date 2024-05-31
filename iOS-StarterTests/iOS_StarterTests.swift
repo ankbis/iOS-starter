@@ -20,6 +20,16 @@ class iOS_StarterTests: XCTestCase {
     }
 
     func testExample() {
+     }
+ 
+     func testExample() {
+-        // This is an example of a functional test case.
++        let viewController = ViewController()
++        XCTAssertEqual(viewController.getMeaning(for: "➕"), "5")
++        XCTAssertEqual(viewController.getMeaning(for: "✖️"), "20")
+         // Use XCTAssert and related functions to verify your tests produce the correct results.
+     }
+ 
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -29,6 +39,12 @@ class iOS_StarterTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+     }
+     
++    func testCalculatorAddition() { XCTAssertEqual(Calculator().add(2, 3), 5) }
++    func testCalculatorMultiplication() { XCTAssertEqual(Calculator().multiply(4, 5), 20) }
+ 
+ }
     }
 
 }
